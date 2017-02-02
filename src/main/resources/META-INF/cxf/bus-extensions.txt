@@ -1,0 +1,1 @@
+ru.yuksanbo.cxf.transportahc.AhcTransportFactory::true:true
