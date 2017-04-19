@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>ru.yuksanbo.cxf</groupId>
-    <artifactId>transport-ahc</artifactId>
+    <artifactId>cxf-transport-ahc</artifactId>
     <version>1.2-SNAPSHOT</version>
     <name>Apache CXF Runtime AsyncHttpClient Transport</name>
     <description>Apache CXF Runtime HTTP Transport on top of AsyncHttpClient</description>
