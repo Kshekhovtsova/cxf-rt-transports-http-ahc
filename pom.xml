@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>ru.yuksanbo.cxf</groupId>
     <artifactId>cxf-transport-ahc</artifactId>
-    <version>1.3-SNAPSHOT</version>
+    <version>1.3</version>
     <name>Apache CXF Runtime AsyncHttpClient Transport</name>
     <description>Apache CXF Runtime HTTP Transport on top of AsyncHttpClient</description>
     <packaging>jar</packaging>
@@ -31,7 +31,7 @@
 
     <scm>
         <developerConnection>scm:git:git@github.com:yuksanbo/cxf-rt-transports-http-ahc.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>release/1.3</tag>
     </scm>
 
     <distributionManagement>
