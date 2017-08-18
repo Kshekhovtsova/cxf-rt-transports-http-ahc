@@ -2,15 +2,18 @@ package ru.yuksanbo.cxf.transportahc
 
 import com.typesafe.config.Config
 import com.typesafe.config.ConfigFactory
+import io.netty.channel.ChannelOption
 import io.netty.channel.EventLoopGroup
 import io.netty.handler.ssl.SslContext
 import io.netty.util.HashedWheelTimer
 import io.netty.util.Timer
 import org.asynchttpclient.AsyncHttpClientConfig
 import org.asynchttpclient.DefaultAsyncHttpClientConfig
+import org.slf4j.LoggerFactory
 import ru.yuksanbo.common.security.Ssl
 
 private val defaultTimer by lazy { HashedWheelTimer() }
+private val log = LoggerFactory.getLogger(AhcHttpConduitConfig::class.java)
 
 class AhcHttpConduitConfig(
         val httpClientConfig: AsyncHttpClientConfig,
@@ -87,6 +90,7 @@ class AhcHttpConduitConfig(
             val connPoolConfig = config.getConfig("connection-pool")
 
             return DefaultAsyncHttpClientConfig.Builder()
+                    .addChannelOption(ChannelOption.AUTO_CLOSE, config.getBoolean("auto-close-on-ioexception"))
                     .setShutdownQuietPeriod(config.getDuration("shutdown.quiet-period").toMillis().toInt())
                     .setShutdownTimeout(config.getDuration("shutdown.timeout").toMillis().toInt())
                     .setKeepAlive(config.getBoolean("keep-alive"))
@@ -105,5 +109,4 @@ class AhcHttpConduitConfig(
                     .setSslSessionTimeout(config.getDuration("ssl.session-timeout").toMillis().toInt())
         }
     }
-
 }

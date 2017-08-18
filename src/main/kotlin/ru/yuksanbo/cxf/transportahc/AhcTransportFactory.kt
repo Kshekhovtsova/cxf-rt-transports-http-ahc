@@ -106,7 +106,7 @@ open class AhcTransportFactory : AbstractTransportFactory, ConduitInitiator {
                 bus
         )
 
-        val address = getAddress(localInfo)
+        val address = getAddress(target)
         localInfo.address = address
 
         configure(bus, conduit, conduit.beanName, address)
@@ -123,8 +123,8 @@ open class AhcTransportFactory : AbstractTransportFactory, ConduitInitiator {
         }
     }
 
-    protected fun getAddress(endpointInfo: EndpointInfo): String {
-        var address = endpointInfo.address!!
+    protected fun getAddress(target: EndpointReferenceType): String {
+        var address = target.address.value!!
 
         if (address.startsWith("ahc://")) {
             address = address.substring(6)

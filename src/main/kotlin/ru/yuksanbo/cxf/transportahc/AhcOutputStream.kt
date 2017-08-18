@@ -2,7 +2,7 @@ package ru.yuksanbo.cxf.transportahc
 
 import java.io.ByteArrayOutputStream
 import java.util.concurrent.atomic.AtomicBoolean
-
+import org.asynchttpclient.request.body.generator.ByteArrayBodyGenerator
 
 internal class AhcOutputStream(
         val maxBufferSize: Long,
@@ -20,7 +20,7 @@ internal class AhcOutputStream(
             throw IllegalStateException("Method close already called")
         }
 
-        requestContext.ahcRequestBuilder.setBody(ByteArrayBodyGenerator(buf, count))
+        requestContext.ahcRequestBuilder.setBody(ByteArrayBodyGenerator(buf))
         sendMessageOp.invoke(requestContext)
     }
 
