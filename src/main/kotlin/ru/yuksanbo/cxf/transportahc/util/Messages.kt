@@ -2,6 +2,7 @@ package ru.yuksanbo.cxf.transportahc.util
 
 import org.apache.cxf.common.util.PropertyUtils
 import org.apache.cxf.message.Message
+import org.asynchttpclient.Realm
 import ru.yuksanbo.cxf.transportahc.AhcHttpConduit
 import java.net.URISyntaxException
 
@@ -28,7 +29,7 @@ inline fun Message.getAddress(): String {
     }
 
     queryString?.let {
-        result = result + "?" + queryString
+        result += "?" + queryString
     }
 
     return result
@@ -39,11 +40,14 @@ object Messages {
     fun getRequestTimeout(message: Message, default: Int): Int {
         var requestTimeout = default
 
-        val msgRequestTimeout = message.getContextualProperty(AhcHttpConduit.Properties.RequestTimeout)
+        val msgRequestTimeout = message.getContextualProperty(AhcHttpConduit.Properties.RequestTimeout) as? String
         if (msgRequestTimeout != null) {
-            requestTimeout = msgRequestTimeout.toString().toInt()
+            requestTimeout = msgRequestTimeout.toInt()
         }
 
         return requestTimeout
     }
+
+    fun getRealm(message: Message): Realm? =  message.getContextualProperty(AhcHttpConduit.Properties.Realm) as? Realm
+
 }

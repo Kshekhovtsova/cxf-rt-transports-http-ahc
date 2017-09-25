@@ -67,11 +67,14 @@ open class AhcHttpConduit(
                 .setRequestTimeout(Messages.getRequestTimeout(message, ahcHttpConduitConfig.httpClientConfig.requestTimeout))
                 .setCharset(Charsets.UTF_8)
 
+        Messages.getRealm(message)?.let {
+            log.info("realm was set")
+            requestBuilder.setRealm(it)
+        }
+
         message.getContextualBoolean(Properties.FollowRedirect)?.let { requestBuilder.setFollowRedirect(it) }
 
         requestHeaders.add("Content-Type", message[Message.CONTENT_TYPE]!!.toString())
-
-        //todo: set realm properties (basic, etc)
 
         val requestContext = AhcRequestContext(address, requestHeaders, requestBuilder, timings)
 
@@ -319,12 +322,20 @@ open class AhcHttpConduit(
         private val prefix = AhcHttpConduit::class.java.name + "."
 
         /* HTTP related */
+
         @JvmField
         val FollowRedirect = prefix + "follow-redirect"
 
         /* Conduit specific contextual properties */
+
+        /**
+         * Timeout for an outbound request in millis
+         */
         @JvmField
         val RequestTimeout = prefix + "request-timeout"
+
+        @JvmField
+        val Realm = prefix + "realm"
 
         /* CXF specific */
         @JvmField
