@@ -20,7 +20,7 @@ internal class AhcOutputStream(
             throw IllegalStateException("Method close already called")
         }
 
-        requestContext.ahcRequestBuilder.setBody(ByteArrayBodyGenerator(buf))
+        requestContext.ahcRequestBuilder.setBody(ByteArrayBodyGenerator(toByteArray()))
         sendMessageOp.invoke(requestContext)
     }
 
