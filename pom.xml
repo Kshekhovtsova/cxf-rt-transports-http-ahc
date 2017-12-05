@@ -13,7 +13,7 @@
         <kotlin.version>1.1.4</kotlin.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <cxf.version>3.1.3</cxf.version>
-        <ahc.version>2.0.34</ahc.version>
+        <ahc.version>2.0.37</ahc.version>
         <junit.version>4.12</junit.version>
         <spring.version>4.2.1.RELEASE</spring.version>
         <slf4j.version>1.7.22</slf4j.version>
