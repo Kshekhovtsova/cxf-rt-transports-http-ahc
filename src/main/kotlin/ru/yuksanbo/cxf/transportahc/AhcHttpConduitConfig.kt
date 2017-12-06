@@ -91,6 +91,7 @@ class AhcHttpConduitConfig(
 
             return DefaultAsyncHttpClientConfig.Builder()
                     .addChannelOption(ChannelOption.AUTO_CLOSE, config.getBoolean("auto-close-on-ioexception"))
+                    .setSoReuseAddress(config.getBoolean("so-reuse-address"))
                     .setShutdownQuietPeriod(config.getDuration("shutdown.quiet-period").toMillis().toInt())
                     .setShutdownTimeout(config.getDuration("shutdown.timeout").toMillis().toInt())
                     .setKeepAlive(config.getBoolean("keep-alive"))
