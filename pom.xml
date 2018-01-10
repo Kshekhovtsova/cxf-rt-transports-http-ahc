@@ -36,17 +36,17 @@
 
     <distributionManagement>
         <repository>
-            <id>maven.yuksanbo.ru</id>
-            <name>Yuksanbo Repo</name>
-            <url>scpexe://maven.yuksanbo.ru/home/maven/yuksanbo-repository/</url>
+            <id>bintray-yuksanbo-maven</id>
+            <name>bintray</name>
+            <url>https://api.bintray.com/maven/yuksanbo/maven-repo/cxf-transport-ahc/;publish=1</url>
         </repository>
     </distributionManagement>
 
     <repositories>
         <repository>
-            <id>maven.yuksanbo.ru</id>
-            <name>Yuksanbo Repo</name>
-            <url>http://maven.yuksanbo.ru</url>
+            <id>bintray-yuksanbo-maven</id>
+            <name>bintray</name>
+            <url>https://dl.bintray.com/yuksanbo/maven-repo</url>
         </repository>
     </repositories>
 
